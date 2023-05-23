@@ -13,8 +13,9 @@ Approach:
 
     variable: number, char, list of numbs, output
 
-    Dequeue and check each item thats dequeued. 
-    If number concatenate to number string else make equal to char.
+    Check the peek item at each iteration. 
+    If number dequeue concatenate to number string else dequeue make equal to char.
+				
 
 
 
@@ -32,7 +33,7 @@ public class Uncompress {
 	
 	
 	
-	
+	// Returns  a string of character value printed a specified number of times 
 	public static String printLetter(int number, char character) {
 		
 		   String outputString="";
@@ -43,6 +44,8 @@ public class Uncompress {
 		    return outputString;
 		
 	}
+
+
 	
 	public static String uncompress(String inputString) {
 		
@@ -52,17 +55,21 @@ public class Uncompress {
 	    String listOfNumbers = "0123456789";
 	    Queue <Character> input = new LinkedList<Character>();
 	  
-	    
+	    //Add values to queue 
 	    for(char letter : inputString.toCharArray())
 	    	input.add(letter);
 	    
 	    
 	    while(!input.isEmpty()) {
-	    	
+
+	    	//Checks if the top of the queue is a digit and adds to number string if satisfied 
 	    	if(listOfNumbers.contains(input.peek().toString())){number+= input.poll();}
 	    	else {
 	    		
+							//Save character from queue
 	    		singleLetter = input.poll();
+
+							//Concactenate results of print letter to output 
 	    		output+= printLetter(Integer.parseInt(number),singleLetter); 
 	    		number = "";  	
 	    	}
